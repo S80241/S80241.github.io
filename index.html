@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darwis's Student Bento Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        * THEME: Deep Ocean Blue (#00507F) for UMT context
+        */
+        :root {
+            --color-background: #F8F9FA; /* Soft White */
+            --color-card-bg: #FFFFFF; /* White */
+            --color-text-primary: #343A40; /* Dark Grey */
+            --color-text-secondary: #6C757D; /* Medium Grey */
+            --color-accent: #00507F; /* Deep Ocean Blue */
+            --color-border: #E9ECEF; /* Light Grey Border */
+            --color-shadow: rgba(0, 0, 0, 0.05);
+            --color-shadow-hover: rgba(0, 0, 0, 0.1);
+            --spacing-unit: 1rem;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Responsive Grid Layout */
+        .bento-grid {
+            display: grid;
+            gap: var(--spacing-unit);
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: auto;
+        }
+
+        .card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+            box-shadow: 0 4px 8px var(--color-shadow);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px var(--color-shadow-hover);
+            background-color: var(--color-background);
+        }
+
+        /* Card Content Styling */
+        .card-header {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-top: 0;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            margin-right: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .highlight {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* Desktop Layout (Grid Area Definitions) */
+        .card-1 {
+            grid-column: span 4;
+            grid-row: span 2;
+            min-height: 300px;
+            justify-content: flex-start;
+        }
+
+        .card-2 {
+            grid-column: span 3;
+            grid-row: span 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        .card-2 .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            border-right: 1px solid var(--color-border);
+            padding-right: 1.5rem;
+        }
+        .card-2 .content:last-child {
+            border-right: none;
+            padding-right: 0;
+            padding-left: 1.5rem;
+        }
+
+        .card-3 {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .card-4 {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        .card-5 {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .card-6 {
+            grid-column: span 7;
+            grid-row: span 1;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile Layout (Stacked Vertically) */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                grid-column: auto;
+                grid-row: auto;
+                min-height: auto !important;
+            }
+            
+            .card-2 {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .card-2 .content {
+                border-right: none;
+                padding-right: 0;
+            }
+            .card-2 .content:first-child {
+                border-right: 1px solid var(--color-border);
+                padding-right: 1.5rem;
+            }
+            .card-2 .content:last-child {
+                padding-left: 0;
+            }
+
+            .card-1 { order: 1; }
+            .card-2 { order: 2; }
+            .card-3 { order: 3; }
+            .card-4 { order: 4; }
+            .card-5 { order: 5; }
+            .card-6 { order: 6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bento-grid">
+            <div class="card card-1">
+                <div>
+                    <div class="card-header">Student Profile</div>
+                    <h1 class="card-title">Darwis</h1>
+                    <h2 class="card-subtitle">Food Science | Year 1</h2>
+                    <p class="card-text">
+                        **Innovating food safety.**
+                    </p>
+                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-secondary);">
+                        <span class="highlight">Current Program:</span> Universiti Malaysia Terengganu (UMT)
+                    </p>
+                </div>
+                <div class="social-links">
+                    <div class="card-header" style="margin-bottom: 0.5rem;">Quick Links</div>
+                    <a href="#" aria-label="LinkedIn Profile">LinkedIn</a>
+                    <a href="#" aria-label="GitHub Profile">GitHub</a>
+                    <a href="#" aria-label="UMT Student Portal">UMT Portal</a>
+                </div>
+            </div>
+
+            <div class="card card-2">
+                <div class="content">
+                    <div class="card-header">Campus Location</div>
+                    <div class="card-title" style="font-size: 1.2rem;">UMT, Kuala Nerus</div>
+                </div>
+                <div class="content" style="text-align: right;">
+                    <div class="card-header">Local Time</div>
+                    <div class="card-title" style="font-size: 1.2rem;">14:40 MYT</div>
+                </div>
+            </div>
+
+            <div class="card card-3">
+                <div class="card-header">Key Skills & Subjects</div>
+                <p class="card-subtitle">Technical Foundation</p>
+                <ul style="padding-left: 1.2rem; margin: 0;">
+                    <li class="card-text" style="margin: 0;">Food Chemistry</li>
+                    <li class="card-text" style="margin: 0;">Microbiology</li>
+                    <li class="card-text" style="margin: 0;">Lab Analysis</li>
+                    <li class="card-text" style="margin: 0;">**Excel** (Data Handling)</li>
+                </ul>
+            </div>
+
+            <div class="card card-4">
+                <div class="card-header">Recent Experiment Focus</div>
+                <h2 class="card-title">'Starch Gelatinization in Local Kuih'</h2>
+                <p class="card-text" style="font-size: 0.9rem;">
+                    Analyzing texture profiles and water activity in popular <span class="highlight">Kuih Lapis</span> samples using rheology.
+                </p>
+            </div>
+
+            <div class="card card-5">
+                <div class="card-header">Campus Activity</div>
+                <h2 class="card-title">Wellbeing</h2>
+                <p class="card-text">
+                    **Evening walks** at <span class="highlight">Pantai UMT</span>.
+                </p>
+            </div>
+
+            <div class="card card-6">
+                <div class="card-header">Student Focus Playlist (Placeholder)</div>
+                <p class="card-text" style="margin: 0;">
+                    <span class="highlight">Music Player Interface:</span> Lo-Fi Beats for Deep Work
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
